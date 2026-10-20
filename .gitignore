@@ -1,0 +1,12 @@
+# 忽略目录
+target/
+recordings/
+recordersApp/*
+models/
+.vscode/
+
+# 忽略文件格式
+*.zip
+软件设计.md
+*.bak
+*.bat

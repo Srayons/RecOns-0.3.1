@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.subtitlerecorder.ui.MainController"
+           prefWidth="760" prefHeight="420"
+           style="-fx-background-color: transparent;">
+    
+    <!-- 主卡片容器 -->
+    <VBox fx:id="consoleCard"
+          prefWidth="720" prefHeight="400"
+          spacing="16"
+          style="-fx-background-color: white;
+                 -fx-background-radius: 16;
+                 -fx-padding: 20;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 20, 0, 0, 6);">
+        
+        <!-- ==================== 顶部标签栏 ==================== -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            
+            <!-- 全屏录制（选中状态） -->
+            <Button fx:id="fullScreenTab" text="● 全屏录制"
+                    onAction="#handleTabFullScreen"
+                    style="-fx-background-color: linear-gradient(to right, #7c5cff, #9b7cff);
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-font-weight: bold;
+                           -fx-font-family: 'Microsoft YaHei';
+                           -fx-padding: 10 22 10 22;
+                           -fx-background-radius: 10;
+                           -fx-cursor: hand;
+                           -fx-effect: dropshadow(gaussian, rgba(124,92,255,0.35), 12, 0, 0, 4);"/>
+            
+            <!-- 区域录制 -->
+            <Button fx:id="regionTab" text="区域录制"
+                    onAction="#handleTabRegion"
+                    style="-fx-background-color: white;
+                           -fx-text-fill: #4a4a5e;
+                           -fx-font-size: 14px;
+                           -fx-font-family: 'Microsoft YaHei';
+                           -fx-padding: 10 22 10 22;
+                           -fx-background-radius: 10;
+                           -fx-border-color: #e5e5ef;
+                           -fx-border-radius: 10;
+                           -fx-border-width: 1;
+                           -fx-cursor: hand;"/>
+            
+
+           <!-- 模式选择: （直播、游戏、教程、网课）-->
+           <ComboBox value="模式选择"             
+                     style="-fx-background-color: white;
+                           -fx-text-fill: #4a4a5e;
+                           -fx-font-size: 14px;
+                           -fx-font-family: 'Microsoft YaHei';
+                           -fx-padding: 10 22 10 22;
+                           -fx-background-radius: 10;
+                           -fx-border-color: #e5e5ef;
+                           -fx-border-radius: 10;
+                           -fx-border-width: 1;
+                           -fx-cursor: hand;">
+           </ComboBox>            
+        </HBox>
+        
+        <!-- ==================== 录制参数卡片 ==================== -->
+        <VBox spacing="14"
+              style="-fx-background-color: #fafaff;
+                     -fx-background-radius: 12;
+                     -fx-padding: 18;
+                     -fx-border-color: #eeecf8;
+                     -fx-border-radius: 12;
+                     -fx-border-width: 1;">
+            
+            <!-- 卡片标题 -->
+            <Label text="录制参数"
+                   style="-fx-text-fill: #1a1a2e;
+                          -fx-font-size: 15px;
+                          -fx-font-weight: bold;
+                          -fx-font-family: 'Microsoft YaHei';"/>
+            
+            <!-- 参数网格 -->
+            <GridPane hgap="12" vgap="12">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" percentWidth="50"/>
+                    <ColumnConstraints hgrow="ALWAYS" percentWidth="50"/>
+                </columnConstraints>
+                
+                <!-- 分辨率 -->
+                <HBox GridPane.columnIndex="0" GridPane.rowIndex="0"
+                      alignment="CENTER_LEFT"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 10;
+                             -fx-padding: 12 16 12 16;
+                             -fx-border-color: #eeecf8;
+                             -fx-border-radius: 10;
+                             -fx-border-width: 1;">
+                    <Label text="分辨率"
+                           style="-fx-text-fill: #8a8a9e;
+                                  -fx-font-size: 13px;
+                                  -fx-font-family: 'Microsoft YaHei';"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="2560×1600"
+                           style="-fx-text-fill: #1a1a2e;
+                                  -fx-font-size: 14px;
+                                  -fx-font-weight: bold;
+                                  -fx-font-family: 'Microsoft YaHei';"/>
+                </HBox>
+                
+                <!-- 帧率 -->
+                <HBox GridPane.columnIndex="1" GridPane.rowIndex="0"
+                      alignment="CENTER_LEFT"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 10;
+                             -fx-padding: 12 16 12 16;
+                             -fx-border-color: #eeecf8;
+                             -fx-border-radius: 10;
+                             -fx-border-width: 1;">
+                    <Label text="帧率"
+                           style="-fx-text-fill: #8a8a9e;
+                                  -fx-font-size: 13px;
+                                  -fx-font-family: 'Microsoft YaHei';"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="30 fps"
+                           style="-fx-text-fill: #1a1a2e;
+                                  -fx-font-size: 14px;
+                                  -fx-font-weight: bold;
+                                  -fx-font-family: 'Microsoft YaHei';"/>
+                </HBox>
+                
+                <!-- 系统声音 -->
+                <HBox GridPane.columnIndex="0" GridPane.rowIndex="1"
+                      alignment="CENTER_LEFT"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 10;
+                             -fx-padding: 12 16 12 16;
+                             -fx-border-color: #eeecf8;
+                             -fx-border-radius: 10;
+                             -fx-border-width: 1;">
+                    <Label text="系统声音"
+                           style="-fx-text-fill: #8a8a9e;
+                                  -fx-font-size: 13px;
+                                  -fx-font-family: 'Microsoft YaHei';"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <HBox spacing="6" alignment="CENTER">
+                        <Circle radius="4" fill="#28c840"/>
+                        <Label text="开启"
+                               style="-fx-text-fill: #28c840;
+                                      -fx-font-size: 14px;
+                                      -fx-font-weight: bold;
+                                      -fx-font-family: 'Microsoft YaHei';"/>
+                    </HBox>
+                </HBox>
+                
+                <!-- 麦克风 -->
+                <HBox GridPane.columnIndex="1" GridPane.rowIndex="1"
+                      alignment="CENTER_LEFT"
+                      style="-fx-background-color: white;
+                             -fx-background-radius: 10;
+                             -fx-padding: 12 16 12 16;
+                             -fx-border-color: #eeecf8;
+                             -fx-border-radius: 10;
+                             -fx-border-width: 1;">
+                    <Label text="麦克风"
+                           style="-fx-text-fill: #8a8a9e;
+                                  -fx-font-size: 13px;
+                                  -fx-font-family: 'Microsoft YaHei';"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <HBox spacing="6" alignment="CENTER">
+                        <Circle radius="4" fill="#28c840"/>
+                        <Label text="开启"
+                               style="-fx-text-fill: #28c840;
+                                      -fx-font-size: 14px;
+                                      -fx-font-weight: bold;
+                                      -fx-font-family: 'Microsoft YaHei';"/>
+                    </HBox>
+                </HBox>
+            </GridPane>
+        </VBox>
+        
+        <!-- ==================== 开始录制按钮 ==================== -->
+        <Button fx:id="startRecordButton"
+                text="●  开始录制 (F9)"
+                onAction="#handleStartRecording"
+                maxWidth="Infinity"
+                style="-fx-background-color: linear-gradient(to right, #7c5cff, #9b7cff);
+                       -fx-text-fill: white;
+                       -fx-font-size: 16px;
+                       -fx-font-weight: bold;
+                       -fx-font-family: 'Microsoft YaHei';
+                       -fx-padding: 16 0 16 0;
+                       -fx-background-radius: 12;
+                       -fx-cursor: hand;
+                       -fx-effect: dropshadow(gaussian, rgba(124,92,255,0.4), 15, 0, 0, 5);"/>
+    </VBox>
+</StackPane>
